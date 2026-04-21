@@ -13,6 +13,7 @@ const foods = [
 ];
 
 export default function FoodGallery() {
+  if (!FoodGallery) return <div>Syncing Library...</div>;
   return (
     <div className="space-y-8 animate-in p-2 md:p-6 pb-20">
       <header className="flex flex-col md:flex-row md:items-center justify-between gap-4">

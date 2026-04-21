@@ -13,6 +13,7 @@ const achievements = [
 ];
 
 export default function Achievements() {
+  if (!Achievements) return <div>Loading Hall of Fame...</div>;
   return (
     <div className="space-y-8 animate-in p-2 md:p-6 pb-20">
       <header className="flex items-center gap-4">

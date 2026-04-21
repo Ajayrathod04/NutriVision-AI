@@ -4,6 +4,7 @@ import { Zap, AlertTriangle, Coffee, Pizza, Sparkles, Brain, ArrowRight, Info } 
 console.log("Rendering: CravingPredictor");
 
 export default function CravingPredictor() {
+  if (!CravingPredictor) return <div>Syncing Neural Centers...</div>;
   const hour = new Date().getHours();
   
   const getPrediction = () => {

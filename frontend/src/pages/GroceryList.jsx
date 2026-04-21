@@ -5,6 +5,7 @@ import { useState } from "react";
 console.log("Rendering: GroceryList");
 
 export default function GroceryList() {
+  if (!GroceryList) return <div>Accessing Inventory...</div>;
   const [items, setItems] = useState([
     { id: 1, name: "Organic Spinach", category: "Greens", checked: false, image: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?w=100&h=100&fit=crop" },
     { id: 2, name: "Avocado", category: "Healthy Fats", checked: true, image: "https://images.unsplash.com/photo-1523049673857-d185397756a8?w=100&h=100&fit=crop" },
