@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
-import { Zap, AlertTriangle, Coffee, Pizza, Sparkles, Brain, ArrowRight } from "lucide-react";
+import { Zap, AlertTriangle, Coffee, Pizza, Sparkles, Brain, ArrowRight, Info } from "lucide-react";
+
+console.log("Rendering: CravingPredictor");
 
 export default function CravingPredictor() {
   const hour = new Date().getHours();

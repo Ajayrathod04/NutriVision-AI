@@ -36,7 +36,7 @@ export default function Sidebar() {
     {
       title: "NUTRITION",
       items: [
-        { to: "/dashboard", icon: Utensils, label: "Food Gallery" },
+        { to: "/gallery", icon: Utensils, label: "Food Gallery" },
         { to: "/logger", icon: Calculator, label: "Meal Logger" },
         { to: "/report", icon: Heart, label: "Mood Eating" },
         { to: "/scanner", icon: Scan, label: "Food Scanner" },
@@ -46,7 +46,7 @@ export default function Sidebar() {
     {
       title: "AI FEATURES",
       items: [
-        { to: "/predictor", icon: Brain, label: "Craving Predictor" },
+        { to: "/craving", icon: Brain, label: "Craving Predictor" },
         { to: "/digital-twin", icon: UserIcon, label: "Digital Twin" },
       ]
     }

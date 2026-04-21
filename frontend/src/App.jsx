@@ -12,9 +12,19 @@ import DigitalTwin from "./pages/DigitalTwin";
 import Chat from "./pages/Chat";
 import Login from "./pages/Login";
 import HabitTracker from "./pages/HabitTracker";
+import FoodGallery from "./pages/FoodGallery";
+import Achievements from "./pages/Achievements";
+
+const NotFound = () => (
+    <div className="h-screen flex flex-col items-center justify-center text-center p-6">
+        <h2 className="text-5xl font-black mb-4">404</h2>
+        <p className="text-gray-400 mb-8">Bio-route not found. Redirecting to neural center?</p>
+        <button onClick={() => window.location.href = '/'} className="btn-primary">Return to Base</button>
+    </div>
+);
 
 function App() {
-  const [user, setUser] = useState({ name: "Ajay Rathod" }); // Defaulting to logged in for demo
+  const [user, setUser] = useState({ name: "Ajay Rathod" });
 
   return (
     <Router>
@@ -31,12 +41,13 @@ function App() {
               <Route path="/scanner" element={<FoodScanner />} />
               <Route path="/logger" element={<MealLogger />} />
               <Route path="/report" element={<DailyReport />} />
-              <Route path="/predictor" element={<CravingPredictor />} />
+              <Route path="/craving" element={<CravingPredictor />} />
+              <Route path="/gallery" element={<FoodGallery />} />
+              <Route path="/achievements" element={<Achievements />} />
               <Route path="/digital-twin" element={<DigitalTwin />} />
               <Route path="/chat" element={<Chat />} />
               <Route path="/habit-tracker" element={<HabitTracker />} />
-              {/* Fallbacks for new requested pages */}
-              <Route path="/achievements" element={<Dashboard user={user} />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </AppLayout>
         )}
