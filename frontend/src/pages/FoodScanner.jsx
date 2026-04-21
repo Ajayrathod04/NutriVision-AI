@@ -7,7 +7,7 @@ export default function FoodScanner() {
   const [image, setImage] = useState(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [result, setResult] = useState("");
-  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:8080";
+  const BASE_URL = import.meta.env.VITE_API_BASE_URL || "https://nutrivision-backend-295594191663.us-central1.run.app";
 
   const handleCapture = (e) => {
     const file = e.target.files[0];
@@ -24,7 +24,7 @@ export default function FoodScanner() {
     setResult("");
 
     try {
-      const response = await axios.post(`${BACKEND_URL}/analyze-food`, { image });
+      const response = await axios.post(`${BASE_URL}/analyze-food`, { image });
       setResult(response.data.data);
     } catch (err) {
       setResult("AI service currently simulating... Estimated: Salad bowl (250 kcal).");

@@ -10,7 +10,7 @@ export default function Chat() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const scrollRef = useRef(null);
-  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:8080";
+  const BASE_URL = import.meta.env.VITE_API_BASE_URL || "https://nutrivision-backend-295594191663.us-central1.run.app";
 
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -25,7 +25,7 @@ export default function Chat() {
     setLoading(true);
 
     try {
-      const res = await axios.post(`${BACKEND_URL}/ask-ai`, { prompt: input });
+      const res = await axios.post(`${BASE_URL}/ask-ai`, { prompt: input });
       setMessages(prev => [...prev, { role: "ai", content: res.data.data }]);
     } catch (err) {
       setMessages(prev => [...prev, { role: "ai", content: "I'm having trouble connecting to my brain right now. But generally, eating more whole foods is always a good idea!" }]);
