@@ -35,12 +35,14 @@ export default function Achievements() {
           >
             <span 
                 role="img" 
-                aria-label={item.type} 
+                aria-label={item.type.toLowerCase()} 
                 className="text-5xl mb-6 transform transition-transform group-hover:scale-125 duration-300 block"
             >
                 {item.icon}
             </span>
-            <h3 className="text-xl font-extrabold mb-2">{item.title}</h3>
+            <h3 className="text-xl font-extrabold mb-2">
+                <span role="img" aria-label={item.type.toLowerCase()}>{item.icon}</span> {item.title}
+            </h3>
             <p className="text-sm text-gray-500 leading-relaxed italic">"{item.desc}"</p>
             
             <div className="mt-6 pt-6 border-t border-white/5 w-full">
