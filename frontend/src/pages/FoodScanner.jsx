@@ -58,7 +58,7 @@ export default function FoodScanner() {
             {!isAnalyzing && (
                 <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 w-full px-6">
                     <input type="file" accept="image/*" onChange={handleCapture} id="cam-input" className="hidden" />
-                    <label htmlFor="cam-input" className="btn-primary w-full cursor-pointer shadow-lg">
+                    <label htmlFor="cam-input" className="btn-primary w-full cursor-pointer shadow-lg" aria-label="Activate camera to scan food">
                         <Camera size={20} /> {image ? "Retake Image" : "Activate Lens"}
                     </label>
                 </div>
@@ -109,7 +109,7 @@ export default function FoodScanner() {
                 )}
 
                 {!result && !isAnalyzing && image && (
-                    <button onClick={analyze} className="btn-primary w-full mt-auto">
+                    <button onClick={analyze} className="btn-primary w-full mt-auto" aria-label="Run AI nutritional analysis">
                         <Zap size={20} /> Run AI Inference
                     </button>
                 )}

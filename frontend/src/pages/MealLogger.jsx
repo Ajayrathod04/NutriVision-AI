@@ -60,7 +60,7 @@ export default function MealLogger() {
                     </select>
                 </div>
             </div>
-            <button onClick={addMeal} className="btn-primary w-full mt-4">
+            <button onClick={addMeal} className="btn-primary w-full mt-4" aria-label="Add meal to daily log">
               <Zap size={18} /> Add to Log
             </button>
           </div>

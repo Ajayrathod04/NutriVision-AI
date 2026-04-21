@@ -2,12 +2,29 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const axios = require("axios");
+const helmet = require("helmet");
+const rateLimit = require("express-rate-limit");
 
 dotenv.config();
 
 const app = express();
+app.use(helmet());
 app.use(cors());
 app.use(express.json({ limit: "15mb" }));
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100
+});
+
+app.use(limiter);
+
+// NEW ROUTES
+const analyticsRoutes = require("./routes/analytics");
+const aiRoutes = require("./routes/ai");
+
+app.use("/analytics", analyticsRoutes);
+app.use("/ai", aiRoutes);
 
 const PORT = process.env.PORT || 8080;
 
