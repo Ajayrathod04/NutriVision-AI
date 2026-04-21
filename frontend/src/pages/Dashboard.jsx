@@ -1,7 +1,8 @@
-import { motion } from "framer-motion";
 import { 
-  Zap, Calendar, Coffee, Droplets, Target, TrendingUp, AlertCircle, Sparkles, User
+  Zap, Calendar, Coffee, Droplets, Target, TrendingUp, AlertCircle, Sparkles, User, Utensils
 } from "lucide-react";
+import { useState } from "react";
+import { motion } from "framer-motion";
 import { 
   LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell, AreaChart, Area
 } from "recharts";
@@ -25,6 +26,23 @@ const mealDist = [
 ];
 
 export default function Dashboard({ user }) {
+  const [food, setFood] = useState("");
+  const [result, setResult] = useState(null);
+
+  const handleCheck = async () => {
+    try {
+      const res = await fetch((import.meta.env.VITE_API_BASE_URL || "") + "/ai/predict", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ food })
+      });
+      const data = await res.json();
+      setResult(data);
+    } catch (e) {
+      setResult({ calories: "N/A", protein: "N/A", score: "Fallback Active" });
+    }
+  };
+
   return (
     <div className="space-y-8 animate-in p-2 md:p-6">
       <header className="flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -65,6 +83,46 @@ export default function Dashboard({ user }) {
         <StatCard label="Calories Today" value="1,840" icon={Target} color="bg-green-500" trend={2} />
         <StatCard label="Water Intake" value="1.8L" icon={Droplets} color="bg-blue-500" trend={-5} />
         <StatCard label="Active Streak" value="14 Days" icon={Calendar} color="bg-pink-500" />
+      </div>
+
+      {/* NEW FEATURE: Health & Food Check */}
+      <div className="mt-6 p-6 bg-white/5 border border-white/10 rounded-2xl">
+        <h2 className="text-xl font-bold flex items-center gap-2 mb-4 text-white">
+          <Utensils size={20} className="text-accent" /> Health & Food Check
+        </h2>
+
+        <div className="flex flex-col md:flex-row gap-3">
+          <input
+            type="text"
+            placeholder="Enter food (e.g. pizza, apple)"
+            className="p-3 rounded-xl bg-black/40 text-white w-full border border-white/10 focus:border-accent outline-none"
+            onChange={(e) => setFood(e.target.value)}
+          />
+
+          <button
+            className="px-8 py-3 bg-accent text-white rounded-xl font-bold hover:bg-accent/80 transition-all shadow-lg shadow-accent/20"
+            onClick={handleCheck}
+          >
+            Analyze
+          </button>
+        </div>
+
+        {result && (
+          <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 animate-in">
+            <div className="p-4 bg-white/5 rounded-xl border border-white/5">
+                <p className="text-xs text-gray-500 font-bold uppercase tracking-widest mb-1">Calories</p>
+                <p className="text-xl font-black text-white">{result.calories}</p>
+            </div>
+            <div className="p-4 bg-white/5 rounded-xl border border-white/5">
+                <p className="text-xs text-gray-500 font-bold uppercase tracking-widest mb-1">Protein</p>
+                <p className="text-xl font-black text-white">{result.protein || "N/A"}</p>
+            </div>
+            <div className="p-4 bg-white/5 rounded-xl border border-white/5">
+                <p className="text-xs text-gray-500 font-bold uppercase tracking-widest mb-1">Health Score</p>
+                <p className="text-xl font-black text-accent">{result.score || "Fallback"}</p>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Charts Grid */}

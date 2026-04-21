@@ -4,12 +4,12 @@ import { Trophy, Star, Target, Zap, Heart, Droplets, Flame } from "lucide-react"
 console.log("Rendering: Achievements");
 
 const achievements = [
-  { title: "7-Day Streak", icon: "🔥", desc: "Logged meals for a full week", type: "Streak" },
-  { title: "Salad Master", icon: "🥗", desc: "Consumed 10 healthy salads", type: "Healthy" },
-  { title: "Hydration Pro", icon: "💧", desc: "Met water goal for 5 days", type: "Hydration" },
-  { title: "Macro Warrior", icon: "💪", desc: "Perfect protein balance", type: "Fitness" },
-  { title: "Calorie Sniper", icon: "🎯", desc: "Stayed within 50kcal of goal", type: "Goal" },
-  { title: "Life Scout Gold", icon: "🏆", desc: "Reached 90+ health score", type: "Milestone" },
+  { title: "🔥 7-Day Streak", icon: "🔥", desc: "Logged meals for a full week", type: "Streak" },
+  { title: "🥗 Healthy Eating", icon: "🥗", desc: "Consumed 10 healthy salads", type: "Healthy" },
+  { title: "💧 Hydration Quest", icon: "💧", desc: "Met water goal for 5 days", type: "Hydration" },
+  { title: "💪 Fitness Warrior", icon: "💪", desc: "Perfect protein balance", type: "Fitness" },
+  { title: "🎯 Goal Crusher", icon: "🎯", desc: "Stayed within 50kcal of goal", type: "Goal" },
+  { title: "🏆 Milestone Gold", icon: "🏆", desc: "Reached 90+ health score", type: "Milestone" },
 ];
 
 export default function Achievements() {
