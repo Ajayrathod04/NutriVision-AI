@@ -1,62 +1,55 @@
-# 🧠 NutriVision AI: Predictive Health Intelligence System
+# NutriVision AI 🧠🥗
 
-[![Evaluation Status](https://img.shields.io/badge/Status-Hackathon--Ready-brightgreen?style=for-the-badge)](https://nutrivision-frontend-295594191663.us-central1.run.app)
-[![Tech Stack](https://img.shields.io/badge/Stack-React%20%7C%20Node%20%7C%20Gemini-blue?style=for-the-badge)](https://github.com/Ajayrathod04/NutriVision-AI)
-[![UI/UX](https://img.shields.io/badge/Design-Glassmorphism-purple?style=for-the-badge)](https://nutrivision-frontend-295594191663.us-central1.run.app)
+## 🚀 Problem
+Modern users struggle to understand food health instantly.
 
-NutriVision AI is a production-grade, full-stack health intelligence platform that transforms raw dietary data into predictive wellness insights. Built for high-stake evaluations, it combines the deterministic precision of biological tracking with the generative power of Gemini 1.5 Flash.
+## 💡 Solution
+NutriVision AI provides real-time food & health analysis using:
+- Deterministic nutrition logic (works without AI)
+- AI-enhanced insights (Gemini optional)
 
----
+## ⚡ Key Features
+- 🍽️ Food Analysis (Calories, Protein, Health Score)
+- 🧠 AI Insights (optional, fallback-safe)
+- 📊 Dashboard with health tracking
+- 🔁 Deterministic-first architecture (reliable system)
 
-### 🌐 Live Production Deployment
-*   **🚀 Frontend (Dashboard):** [Live App Link](https://nutrivision-frontend-295594191663.us-central1.run.app)
-*   **⚙️ Backend (API Layer):** [API Health Status](https://nutrivision-backend-295594191663.us-central1.run.app)
+## 🧠 How it Works
+1. User inputs food
+2. Backend calculates nutrition (fallback system)
+3. AI enhances insights (if available)
+4. Dashboard visualizes results
 
----
+## 🏗️ Architecture
+- Frontend: React
+- Backend: Node.js
+- Deployment: Google Cloud Run
+- Database (optional): Firestore
+- **Live Frontend:** [https://nutrivision-frontend-295594191663.us-central1.run.app/](https://nutrivision-frontend-295594191663.us-central1.run.app/)
+- **Live Backend:** [https://nutrivision-backend-295594191663.us-central1.run.app/](https://nutrivision-backend-295594191663.us-central1.run.app/)
 
-### 💎 Core Intelligence Modules
+## ☁️ Cloud-Native Design
+- Stateless backend
+- Scalable deployment
+- Fail-safe APIs
 
-#### 1. 👁️ AI Food Scanner (Gemini Vision)
-Instant nutritional extraction from images using Gemini 1.5 Flash. Provides precise calorie estimation, macro-breakdowns, and health verdicts within milliseconds.
+## 🧪 Testing
+- API test coverage added
+- Integration tested on deployed backend
 
-#### 2. 🧠 Neural Craving Predictor
-Uses bio-rhythm analysis to forecast nutritional cravings before they occur. Employs deterministic-first fallbacks to ensure advice is always available.
+## 🔐 Security
+- Helmet, CORS, Rate limiting
+- Input validation
 
-#### 3. 👤 Metabloic Digital Twin
-A visual predictive model of your future health state based on current intake loops. Visualized via optimized Recharts SVG engines.
+## ♿ Accessibility
+- aria-label support
+- keyboard-friendly UI
 
-#### 4. 🛒 Biological Inventory (Grocery List)
-Scientific grocery tracking pre-populated with bio-essential superfoods (Spinach, Chia, Avocado). Includes absorption-maximizing tips for iron and antioxidants.
+## 📸 Demo
+(Add screenshots here)
 
-#### 5. 🏆 Hall of Fame (Achievements)
-A gamified behavioral sync system that rewards hydration, healthy eating streaks, and fitness milestones with high-impact micro-animations.
+## 🌍 Impact
+Helps users make healthier daily decisions instantly.
 
----
-
-### 🛠 Technical Architecture (Enterprise Grade)
-
-| Layer | Technology | Key Advantage |
-| :--- | :--- | :--- |
-| **Frontend** | React + Tailwind v4 + Framer Motion | Premium Glassmorphism UI with high-performance animations. |
-| **Backend** | Node.js (Express) | Scalable API architecture deployed via Google Cloud Run. |
-| **Generative AI** | Gemini 1.5 Flash Vision | Context-aware nutritional analysis and behavioral forecasting. |
-| **Database** | Google Firestore | Real-time analytics and persistence for high-concurrency logging. |
-| **A11y & UX** | WCAG Compliant | Screen-reader ready with atomic ARIA-label integration. |
-
----
-
-### 🛡 Security & Stability (Eevalution Boosters)
-*   **Hardenened Security:** Implements `Helmet.js` headers, `CORS` protection, and `Express-Rate-Limit` to prevent DDoS and Cross-Site attacks.
-*   **Automated Audits:** Full `Jest` + `Supertest` suite included with unit and integration coverage.
-*   **Infrastructure:** Multi-container deployment on **Google Cloud Run** for 99.9% uptime.
-*   **Deterministic Reliability:** The app remains 100% functional even if external AI APIs are throttled, using internal algorithmic fallbacks.
-
----
-
-### 🚀 Submission Summary
-*   **GitHub Repostory:** [Ajayrathod04/NutriVision-AI](https://github.com/Ajayrathod04/NutriVision-AI)
-*   **Developer:** Ajay Rathod
-*   **Category:** AI Health & Wellness / Smart Nutrition
-
----
-*Built with ❤️ for the Hack2Skill Evaluation Ecosystem.*
+## ⚡ Unique Point
+“Works even if AI fails” → deterministic-first design
