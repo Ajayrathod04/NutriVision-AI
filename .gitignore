@@ -1,0 +1,9 @@
+# Root gitignore
+node_modules
+.env
+.env.local
+dist
+backend/.env
+frontend/.env
+frontend/dist
+.DS_Store
