@@ -40,7 +40,7 @@ export default function Sidebar() {
         { to: "/logger", icon: Calculator, label: "Meal Logger" },
         { to: "/report", icon: Heart, label: "Mood Eating" },
         { to: "/scanner", icon: Scan, label: "Food Scanner" },
-        { to: "/dashboard", icon: ShoppingBag, label: "Grocery List" },
+        { to: "/grocery", icon: ShoppingBag, label: "Grocery List" },
       ]
     },
     {

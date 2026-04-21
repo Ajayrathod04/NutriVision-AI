@@ -14,6 +14,7 @@ import Login from "./pages/Login";
 import HabitTracker from "./pages/HabitTracker";
 import FoodGallery from "./pages/FoodGallery";
 import Achievements from "./pages/Achievements";
+import GroceryList from "./pages/GroceryList";
 
 const NotFound = () => (
     <div className="h-screen flex flex-col items-center justify-center text-center p-6">
@@ -44,6 +45,7 @@ function App() {
               <Route path="/craving" element={<CravingPredictor />} />
               <Route path="/gallery" element={<FoodGallery />} />
               <Route path="/achievements" element={<Achievements />} />
+              <Route path="/grocery" element={<GroceryList />} />
               <Route path="/digital-twin" element={<DigitalTwin />} />
               <Route path="/chat" element={<Chat />} />
               <Route path="/habit-tracker" element={<HabitTracker />} />
