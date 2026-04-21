@@ -1,9 +1,10 @@
 import Sidebar from "./Sidebar";
 import { motion } from "framer-motion";
+import { Outlet } from "react-router-dom";
 
-export default function AppLayout({ children }) {
+export default function AppLayout() {
   return (
-    <div className="flex min-h-screen bg-dark">
+    <div className="flex min-h-screen bg-dark text-white">
       {/* Sidebar - Hidden on mobile, handled by component */}
       <Sidebar />
 
@@ -16,7 +17,7 @@ export default function AppLayout({ children }) {
             exit={{ opacity: 0, y: 10 }}
             transition={{ duration: 0.3 }}
           >
-            {children}
+            <Outlet />
           </motion.div>
         </div>
       </main>
