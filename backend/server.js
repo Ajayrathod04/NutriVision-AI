@@ -120,6 +120,20 @@ app.post("/daily-report", async (req, res) => {
   });
 });
 
+app.get("/test", (req, res) => {
+  res.json({ 
+    status: "online", 
+    ai_model: "gemini-1.5-flash",
+    deterministic_fallback: "active",
+    demo_ready: true 
+  });
+});
+
+// ROOT ROUTE (Fixes "Cannot GET /")
+app.get("/", (req, res) => {
+  res.status(200).send("NutriVision AI Production API: Running ✅");
+});
+
 app.listen(PORT, () => {
   console.log(`Production Backend running on port ${PORT}`);
 });

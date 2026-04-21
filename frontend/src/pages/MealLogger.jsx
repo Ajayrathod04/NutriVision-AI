@@ -1,74 +1,117 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { List, Plus, Trash2 } from "lucide-react";
+import { Plus, Trash2, Utensils, Zap, Smile, Meh, Frown } from "lucide-react";
 
 export default function MealLogger() {
   const [meals, setMeals] = useState([
-    { name: "Oatmeal with Blueberries", calories: 350, time: "08:15 AM" },
-    { name: "Grilled Chicken Salad", calories: 420, time: "01:20 PM" }
+    { name: "Oatmeal with Almonds", calories: 350, time: "08:15 AM", mood: "Happy" },
+    { name: "Avocado Toast", calories: 420, time: "11:20 AM", mood: "Neutral" }
   ]);
-  const [newName, setNewName] = useState("");
-  const [newCals, setNewCals] = useState("");
+  const [form, setForm] = useState({ name: "", calories: "", mood: "Happy" });
 
   const addMeal = () => {
-    if (!newName) return;
+    if (!form.name) return;
     const now = new Date();
     const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    setMeals([...meals, { name: newName, calories: parseInt(newCals) || 200, time: timeStr }]);
-    setNewName("");
-    setNewCals("");
-  };
-
-  const removeMeal = (index) => {
-    setMeals(meals.filter((_, i) => i !== index));
+    setMeals([...meals, { ...form, time: timeStr }]);
+    setForm({ name: "", calories: "", mood: "Happy" });
   };
 
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="glass-card" style={{ maxWidth: "600px", margin: "0 auto" }}>
-      <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "25px" }}>
-        <List color="#6366f1" />
-        <h2 style={{ margin: 0 }}>Meal Diary</h2>
-      </div>
-
-      <div style={{ display: "flex", gap: "10px", marginBottom: "30px" }}>
-        <input 
-          placeholder="Meal name..." 
-          value={newName}
-          onChange={e => setNewName(e.target.value)}
-          style={{ marginBottom: 0 }}
-        />
-        <input 
-          placeholder="Cals" 
-          type="number"
-          value={newCals}
-          onChange={e => setNewCals(e.target.value)}
-          style={{ width: "100px", marginBottom: 0 }}
-        />
-        <button onClick={addMeal} style={{ display: "flex", alignItems: "center", justifyContent: "center", padding: "10px 15px" }}>
-          <Plus size={20} />
-        </button>
-      </div>
-
-      <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-        {meals.map((meal, i) => (
-          <div key={i} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "15px", background: "rgba(255,255,255,0.03)", borderRadius: "14px", border: "1px solid var(--border)" }}>
+    <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 animate-in p-2 md:p-6">
+      {/* Form Section */}
+      <div className="lg:col-span-2 space-y-6">
+        <div className="glass-card p-6">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="bg-primary/20 p-2 rounded-lg"><Plus className="text-primary" /></div>
+            <h2 className="text-xl font-bold">Log New Meal</h2>
+          </div>
+          
+          <div className="space-y-4">
             <div>
-              <p style={{ fontWeight: 600 }}>{meal.name}</p>
-              <p style={{ fontSize: "0.8rem", color: "#64748b" }}>{meal.time} • {meal.calories} kcal</p>
+                <label className="text-xs font-bold text-gray-500 mb-2 block tracking-wider">FOOD NAME</label>
+                <input 
+                    placeholder="e.g. Quinoa Salad" 
+                    value={form.name}
+                    onChange={e => setForm({...form, name: e.target.value})}
+                    className="w-full bg-black/30 border border-white/10 rounded-xl p-3 outline-none focus:border-primary transition-colors"
+                />
             </div>
-            <button 
-              onClick={() => removeMeal(i)}
-              style={{ background: "transparent", border: "none", color: "#ef4444", padding: 0 }}
-            >
-              <Trash2 size={18} />
+            <div className="grid grid-cols-2 gap-4">
+                <div>
+                    <label className="text-xs font-bold text-gray-500 mb-2 block tracking-wider">CALORIES</label>
+                    <input 
+                        placeholder="0" type="number"
+                        value={form.calories}
+                        onChange={e => setForm({...form, calories: e.target.value})}
+                        className="w-full bg-black/30 border border-white/10 rounded-xl p-3 outline-none focus:border-primary transition-colors"
+                    />
+                </div>
+                <div>
+                    <label className="text-xs font-bold text-gray-500 mb-2 block tracking-wider">MOOD</label>
+                    <select 
+                        value={form.mood}
+                        onChange={e => setForm({...form, mood: e.target.value})}
+                        className="w-full bg-black/30 border border-white/10 rounded-xl p-3 outline-none focus:border-primary transition-colors"
+                    >
+                        <option>Happy</option>
+                        <option>Neutral</option>
+                        <option>Stressed</option>
+                    </select>
+                </div>
+            </div>
+            <button onClick={addMeal} className="btn-primary w-full mt-4">
+              <Zap size={18} /> Add to Log
             </button>
           </div>
-        ))}
+        </div>
+
+        <div className="glass-card p-6 border-l-4 border-primary">
+            <h4 className="font-bold mb-2">Pro Tip</h4>
+            <p className="text-sm text-gray-400">Eating protein-rich breakfasts can reduce late-night cravings by up to 50%.</p>
+        </div>
       </div>
 
-      <div style={{ marginTop: "30px", textAlign: "center", padding: "15px", borderTop: "1px solid var(--border)" }}>
-        <p style={{ color: "#94a3b8" }}>Total Calories: <strong>{meals.reduce((s, m) => s + m.calories, 0)}</strong></p>
+      {/* List Section */}
+      <div className="lg:col-span-3 space-y-6">
+        <div className="glass-card p-6">
+          <div className="flex items-center justify-between mb-8">
+            <div className="flex items-center gap-3">
+                <div className="bg-accent/20 p-2 rounded-lg"><Utensils className="text-accent" /></div>
+                <h2 className="text-xl font-bold">Today's Timeline</h2>
+            </div>
+            <span className="bg-glass px-3 py-1 rounded-full text-xs font-bold">38% Of Daily Goal</span>
+          </div>
+
+          <div className="space-y-4">
+            {meals.map((meal, i) => (
+              <motion.div 
+                key={i} 
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: i * 0.1 }}
+                className="flex items-center justify-between p-4 bg-white/5 rounded-2xl border border-white/5 group hover:border-white/20 transition-all"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-dark rounded-xl flex items-center justify-center border border-white/10">
+                    {meal.mood === 'Happy' ? <Smile size={20} className="text-yellow-500" /> : <Meh size={20} className="text-gray-400" />}
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-white">{meal.name}</h4>
+                    <span className="text-xs text-gray-400 uppercase tracking-widest">{meal.time} • {meal.calories} kcal</span>
+                  </div>
+                </div>
+                <button 
+                  onClick={() => setMeals(meals.filter((_, idx) => idx !== i))}
+                  className="p-2 text-gray-500 hover:text-red-400 transition-colors opacity-0 group-hover:opacity-100"
+                >
+                  <Trash2 size={18} />
+                </button>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
